@@ -10,7 +10,20 @@
     "styled-components": "^1.4.4"
   },
   "devDependencies": {
+    "babel-jest": "^19.0.0",
+    "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.5.0",
+    "jest": "19.0.0",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.5"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "node_modules/enzyme-to-json/serializer"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
