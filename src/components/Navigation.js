@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
 import logo from './icon.svg';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import Subnav from './Subnav';
 
 const Lists = styled.ul`
-  float: right;
+  background: #FFFFFF;
   list-style: none;
   margin: 0;
   padding: 0;
   > li {
-    float: left;
-    margin-right: 46px;
-    padding: 29px 0;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 0;
     a {
       color: #4a4a4a;
       text-decoration: none;
       transition: color .3s ease;
       display: inline-block;
       max-height: 50px;
-      &:hover {
+      &:hover, &.active {
         color: #F26620;
       }
     }
+    > a {
+      width: 100%;
+      padding: 20px;
+    }
     &.settings {
       margin-right: 0;
-      padding: 13px 25px;
+      padding: 0;
       border-left: 1px solid #e4e4e4;
-      height: 50px;
       position: relative;
       .subnav-container {
-        position: absolute;
-        right: 10px;
-        top: 75px;
-        padding-top: 10px;
+        padding-top: 0;
         display: none;
       }
       &:hover {
@@ -43,7 +43,51 @@ const Lists = styled.ul`
           display: block;
         }
       }
+      img {
+        display: inline-block;
+        padding: 5px 25px;
+        height: 43px;
+      }
+      &:after {
+        content: '>';
+        position: absolute;
+        right: 30px;
+        top: 12px;
+        font-size: 2em;
+        color: #d1d1d1;
+      }
     }
+  }
+  @media screen and (min-width: 768px) {
+      float: right;
+      background: transparent;
+      > li {
+        float: left;
+        margin-right: 46px;
+        padding: 29px 0;
+        border-bottom: none;
+        > a {
+          padding: 0;
+          width: auto;
+        }
+        &.settings {
+          padding: 13px 25px;
+          height: 50px;
+          .subnav-container {
+            position: absolute;
+            right: 10px;
+            top: 75px;
+            padding-top: 10px;
+          }
+          img {
+            padding: 0;
+            height: auto;
+          }
+          &:after {
+            content: none;
+          }
+        }
+      }
   }
 `;
 
@@ -51,10 +95,10 @@ class Navigation extends Component {
   render() {
     return (
       <Lists>
-        <li><a href="#" title="Dashboard">Dashboard</a></li>
-        <li><a href="#" title="Projects">Projects</a></li>
-        <li><a href="#" title="Team">Team</a></li>
-        <li><a href="#" title="Company">Company</a></li>
+        <li><NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink></li>
+        <li><NavLink to="/projects" activeClassName="active">Projects</NavLink></li>
+        <li><NavLink to="/team" activeClassName="active">Team</NavLink></li>
+        <li><NavLink to="/company" activeClassName="active">Company</NavLink></li>
         <li className="settings">
           <img src={logo} className="App-logo" alt="logo" />
           <div className="subnav-container">

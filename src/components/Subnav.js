@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Lists = styled.ul`
   position: relative;
-  border: 1px solid #E4E4E4;
-  border-radius: 9px;
-  width: 190px;
-  background: #FFFFFF;
+  width: 100%;
+  background: #F3F3F3;
   padding: 5px 0;
   li {
-    height: 54px;
+    height: 49px;
+    border-bottom: 1px dotted #E4E4E4;
+    &:last-child {
+      border: none;
+    }
     a {
       display: block;
       padding: 18px 25px;
-      width: 140px;
+      width: 100%;
       position: relative;
       &:hover {
         transition: all .3s ease;
@@ -34,27 +37,41 @@ const Lists = styled.ul`
       }
     }
   }
-  &:before {
-    content: '';
-    position: absolute;
-    top: -18px;
-    right: 25px;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 18px solid #E4E4E4;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    top: -16px;
-    right: 25px;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 18px solid #FFFFFF;
+
+  @media screen and (min-width: 768px) {
+    border: 1px solid #E4E4E4;
+    border-radius: 9px;
+    background: #FFFFFF;
+    width: 190px;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      right: 25px;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 18px solid #E4E4E4;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: -16px;
+      right: 25px;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 18px solid #FFFFFF;
+    }
+    li {
+      border-bottom: none;
+      height: 54px;
+      a {
+        width: 140px;
+      }
+    }
   }
 `;
 
@@ -62,15 +79,14 @@ class Subnav extends Component {
   render() {
     return (
       <Lists>
-        <li><a href="#" title="Dashboard">My Profile</a></li>
-        <li><a href="#" title="My Projects">My Projects<span>25</span></a></li>
-        <li><a href="#" title="Notifications">Notifications<span>15</span></a></li>
-        <li><a href="#" title="Tasks">Tasks<span>10</span></a></li>
-        <li><a href="#" title="Help">Help</a></li>
-        <li><a href="#" title="Logout">Logout</a></li>
+        <li><NavLink to="#" activeClassName="active">My Profile</NavLink></li>
+        <li><NavLink to="#" activeClassName="active">My Projects<span>30</span></NavLink></li>
+        <li><NavLink to="#" activeClassName="active">Notifications<span>23</span></NavLink></li>
+        <li><NavLink to="#" activeClassName="active">Tasks<span>10</span></NavLink></li>
+        <li><NavLink to="#" activeClassName="active">Help</NavLink></li>
+        <li><NavLink to="#" activeClassName="active">Logout</NavLink></li>
       </Lists>
     );
   }
 }
-
 export default Subnav;
