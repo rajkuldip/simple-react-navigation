@@ -16,7 +16,7 @@ const Navcontainer = styled.div`
   padding: 0;
   text-transform: uppercase;
   h2 {
-    padding: 29px 30px;
+    padding: 29px 30px 29px 20px;
     margin: 0;
     font-size: 1em;
     font-weight: 400;
@@ -29,11 +29,15 @@ const Navcontainer = styled.div`
     margin: 2.5%;
     h2 {
       float: left;
+      padding-left: 30px;
     }
   }
 `;
 const Maincontainer = styled.div`
-  margin: 2.5%;
+  margin: 20px;
+  @media screen and (min-width:768px) {
+    margin: 2.5%;
+  }
 `;
 
 ReactDOM.render(
